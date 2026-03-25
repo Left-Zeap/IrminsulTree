@@ -61,7 +61,7 @@ def main():
         
         page = st.radio(
             "选择功能",
-            ["📊 概览", "➕ 添加节点", "🔗 添加关系", "📋 节点列表", "🔗 查看/删除关系", "🔍 搜索", "🕸️ 可视化", "💾 数据管理"]
+            ["📊 概览", "➕ 添加节点", "🔗 添加关系", "📋 节点列表", "🔗 查看/删除关系", "🔍 搜索", "🕸️ 可视化", "💾 数据管理", "ℹ️ 关于"]
         )
         
         st.divider()
@@ -1227,6 +1227,169 @@ def show_data_management():
             
             except Exception as e:
                 st.error(f"导入失败: {e}")
+
+
+def show_about():
+    """关于页面"""
+    st.markdown('<div class="main-header">ℹ️ 关于</div>', unsafe_allow_html=True)
+    
+    # 项目介绍
+    st.subheader("📖 项目介绍")
+    st.write("""
+    **原神知识图谱管理系统**（IrminsulTree）是一个开源的原神世界观知识图谱管理工具。
+    
+    基于 Streamlit 构建，无需数据库即可运行，支持节点管理、关系建立、可视化展示等功能。
+    """)
+    
+    st.divider()
+    
+    # 开发者信息
+    st.subheader("👨‍💻 开发团队")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("""
+        **核心开发者**
+        
+        - **Left-Zeap** - 项目创始人、核心架构
+        - 负责：系统设计、后端开发、可视化
+        """)
+    
+    with col2:
+        st.markdown("""
+        **特别感谢**
+        
+        - 所有为数据库贡献内容的原神玩家
+        - miHoYo/HoYoverse 创造的美好世界
+        - Streamlit 开源社区
+        """)
+    
+    st.divider()
+    
+    # 数据库贡献者
+    st.subheader("🌟 数据库贡献者")
+    st.write("感谢以下玩家为本项目数据库做出的贡献（排名不分先后）：")
+    
+    # 这里可以列出贡献者的名字
+    contributors = [
+        "Left-Zeap",
+        # 添加更多贡献者...
+    ]
+    
+    if len(contributors) > 1:
+        cols = st.columns(3)
+        for i, name in enumerate(contributors):
+            cols[i % 3].write(f"• {name}")
+    else:
+        st.info("💡 欢迎成为第一批贡献者！")
+    
+    st.write("""
+    想要成为贡献者？欢迎：
+    - 在 GitHub 提交 Pull Request
+    - 分享你整理的原神资料
+    - 帮助完善节点和关系数据
+    """)
+    
+    st.divider()
+    
+    # 链接
+    st.subheader("🔗 相关链接")
+    
+    link_col1, link_col2, link_col3 = st.columns(3)
+    
+    with link_col1:
+        st.markdown("""
+        **🐙 GitHub 仓库**
+        
+        [github.com/Left-Zeap/IrminsulTree](https://github.com/Left-Zeap/IrminsulTree)
+        
+        欢迎 Star ⭐ 和 Fork！
+        """)
+    
+    with link_col2:
+        st.markdown("""
+        **📺 Bilibili 频道**
+        
+        [space.bilibili.com/你的ID](https://space.bilibili.com/你的ID)
+        
+        项目介绍和使用教程
+        """)
+    
+    with link_col3:
+        st.markdown("""
+        **💬 交流群组**
+        
+        QQ群：123456789
+        
+        Discord：邀请链接
+        """)
+    
+    st.divider()
+    
+    # 技术栈
+    st.subheader("🛠️ 技术栈")
+    st.write("""
+    - **前端框架**：Streamlit
+    - **后端语言**：Python 3.11+
+    - **数据存储**：JSON 文件（支持自动分片）
+    - **可视化**：Vis.js
+    - **数据验证**：Pydantic
+    """)
+    
+    st.divider()
+    
+    # 版本信息
+    st.subheader("📌 版本信息")
+    st.write(f"""
+    - **当前版本**：v{config.APP_VERSION}
+    - **最后更新**：2024年
+    - **开源协议**：MIT License
+    """)
+    
+    st.divider()
+    
+    # 免责声明
+    st.subheader("⚠️ 免责声明")
+    st.warning("""
+    **重要声明：**
+    
+    1. **版权归属**：原神（Genshin Impact）及其所有相关内容（包括但不限于角色、剧情、世界观等）的知识产权归 **miHoYo/HoYoverse** 所有。
+    
+    2. **非官方性质**：本项目为玩家自发制作的同人作品，**与 miHoYo/HoYoverse 官方无关**，不代表官方立场。
+    
+    3. **使用目的**：本项目仅供学习交流使用，**禁止用于任何商业用途**。
+    
+    4. **内容准确性**：数据库内容由社区贡献，可能存在错误或不完整之处，仅供参考。
+    
+    5. **数据安全**：请定期备份数据，开发者不对数据丢失负责。
+    
+    如果本项目侵犯了您的权益，请联系我们删除相关内容。
+    """)
+    
+    st.divider()
+    
+    # 联系方式
+    st.subheader("📧 联系我们")
+    st.write("""
+    如有问题或建议，欢迎通过以下方式联系：
+    
+    - **GitHub Issues**：[提交问题](https://github.com/Left-Zeap/IrminsulTree/issues)
+    - **邮箱**：your-email@example.com
+    - **B站私信**：[@Left-Zeap](https://space.bilibili.com/你的ID)
+    
+    我们重视每一位用户的反馈！
+    """)
+    
+    # 底部版权
+    st.divider()
+    st.caption(f"""
+    © 2024 IrminsulTree Project. All rights reserved.
+    
+    Made with ❤️ by Left-Zeap and contributors.
+    
+    Powered by Streamlit | Data stored locally
+    """)
 
 
 if __name__ == "__main__":
