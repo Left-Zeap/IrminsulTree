@@ -88,6 +88,8 @@ def main():
         show_visualization()
     elif "数据管理" in page:
         show_data_management()
+    elif "关于" in page:
+        show_about()
 
 
 def show_overview():
