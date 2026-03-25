@@ -1,0 +1,165 @@
+{
+  "nodes": [
+    {
+      "id": "zhongli_01",
+      "name": "钟离",
+      "node_type": "Person",
+      "aliases": ["摩拉克斯", "岩神", "岩王帝君"],
+      "category": "自机",
+      "birth_year": -6000,
+      "created_at": "2024-01-01T00:00:00",
+      "updated_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "venti_01",
+      "name": "温迪",
+      "node_type": "Person",
+      "aliases": ["巴巴托斯", "风神"],
+      "category": "自机",
+      "birth_year": -2600,
+      "created_at": "2024-01-01T00:00:00",
+      "updated_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "nahida_01",
+      "name": "纳西妲",
+      "node_type": "Person",
+      "aliases": ["小吉祥草王", "草神", "布耶尔"],
+      "category": "自机",
+      "created_at": "2024-01-01T00:00:00",
+      "updated_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "liyue_01",
+      "name": "璃月港",
+      "node_type": "Location",
+      "aliases": ["商港", "岩之国主城"],
+      "start_time": -3700,
+      "poi_codes": ["liyue_harbor"],
+      "created_at": "2024-01-01T00:00:00",
+      "updated_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "mond_01",
+      "name": "蒙德城",
+      "node_type": "Location",
+      "aliases": ["风之城", "风之国主城"],
+      "start_time": -2600,
+      "poi_codes": ["mondstadt_city"],
+      "created_at": "2024-01-01T00:00:00",
+      "updated_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "sumeru_01",
+      "name": "须弥城",
+      "node_type": "Location",
+      "aliases": ["智慧之城", "草之国主城"],
+      "start_time": -2000,
+      "poi_codes": ["sumeru_city"],
+      "created_at": "2024-01-01T00:00:00",
+      "updated_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "archon_war",
+      "name": "魔神战争",
+      "node_type": "Event",
+      "aliases": ["Archon War", "众神之战"],
+      "start_time": -2600,
+      "end_time": -2000,
+      "created_at": "2024-01-01T00:00:00",
+      "updated_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "seven_archons",
+      "name": "七神",
+      "node_type": "Organization",
+      "aliases": ["尘世七执政", "The Seven"],
+      "start_time": -2000,
+      "created_at": "2024-01-01T00:00:00",
+      "updated_at": "2024-01-01T00:00:00"
+    }
+  ],
+  "edges": [
+    {
+      "id": "rel_01",
+      "source_id": "zhongli_01",
+      "target_id": "seven_archons",
+      "rel_type": "MEMBER_OF",
+      "direction": "directed",
+      "label": [-2000, null],
+      "created_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "rel_02",
+      "source_id": "venti_01",
+      "target_id": "seven_archons",
+      "rel_type": "MEMBER_OF",
+      "direction": "directed",
+      "label": [-2600, null],
+      "created_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "rel_03",
+      "source_id": "zhongli_01",
+      "target_id": "liyue_01",
+      "rel_type": "LOCATED_AT",
+      "direction": "directed",
+      "label": [-3700, null],
+      "created_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "rel_04",
+      "source_id": "venti_01",
+      "target_id": "mond_01",
+      "rel_type": "LOCATED_AT",
+      "direction": "directed",
+      "label": [-2600, null],
+      "created_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "rel_05",
+      "source_id": "zhongli_01",
+      "target_id": "archon_war",
+      "rel_type": "PARTICIPATED_IN",
+      "direction": "directed",
+      "label": "作为岩神参与",
+      "created_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "rel_06",
+      "source_id": "venti_01",
+      "target_id": "archon_war",
+      "rel_type": "PARTICIPATED_IN",
+      "direction": "directed",
+      "label": "作为风神参与",
+      "created_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "rel_07",
+      "source_id": "archon_war",
+      "target_id": "liyue_01",
+      "rel_type": "EVENT_AT",
+      "direction": "directed",
+      "label": "璃月地区战场",
+      "created_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "rel_08",
+      "source_id": "archon_war",
+      "target_id": "mond_01",
+      "rel_type": "EVENT_AT",
+      "direction": "directed",
+      "label": "蒙德地区战场",
+      "created_at": "2024-01-01T00:00:00"
+    },
+    {
+      "id": "rel_09",
+      "source_id": "zhongli_01",
+      "target_id": "venti_01",
+      "rel_type": "RELATED_TO",
+      "direction": "undirected",
+      "label": "旧友",
+      "created_at": "2024-01-01T00:00:00"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+name: Backup Data
+
+on:
+  schedule:
+    # 每天 UTC 00:00 运行（北京时间 08:00）
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Check if data directory exists
+        id: check_data
+        run: |
+          if [ -d "data" ] && [ "$(ls -A data)" ]; then
+            echo "has_data=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_data=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Backup data
+        if: steps.check_data.outputs.has_data == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # 创建备份分支（如果不存在）
+          git checkout -b backup/$(date +%Y%m%d) || git checkout backup/$(date +%Y%m%d)
+          
+          # 添加数据文件
+          git add data/
+          
+          # 提交（如果有更改）
+          git diff --cached --quiet || git commit -m "Auto backup $(date '+%Y-%m-%d %H:%M:%S')"
+          
+          # 推送
+          git push origin backup/$(date +%Y%m%d) || true
+      
+      - name: Create release for major backup
+        if: github.event.schedule == '0 0 * * 0'  # 只在周日创建 release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: backup-$(date +%Y%m%d)
+          release_name: Weekly Backup $(date +%Y%m%d)
+          body: |
+            自动备份数据
+            备份时间：$(date)
+          draft: false
+          prerelease: false
